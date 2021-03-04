@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 //const card = {
 //	image: "src/img/rigo-baby.jpg",
 //	alt: "rigo",
@@ -9,24 +9,35 @@ import React from "react";
 //	button: "click here"
 //};
 
-
 //header
-export function Cards(card) {
+export function Cards(props) {
 	return (
 		<div className="col">
-			<div className="card" style="width: 18rem;">
-				<img className="card-img-top" src={image} alt={alt} />
+			<div className="card">
+				<img
+					src={props.card.image}
+					className="card-img-top"
+					alt={props.card.alt}
+				/>
 				<div className="card-body">
-					<h5 className="card-title">{title}</h5>
-					<p className="card-text">
-						{description}> Some quick example text to build on the
-						card title and make up the bulk of the card's content.
-					</p>
-					<a href={url} className="btn btn-primary">
-						{button}
+					<h5 className="card-title">{props.card.title}</h5>
+					<p className="card-text">{props.card.description}</p>
+					<a href={props.card.url} className="btn btn-primary">
+						{props.card.button}
 					</a>
 				</div>
 			</div>
 		</div>
 	);
 }
+
+Cards.propTypes = {
+	card: {
+		image: PropTypes.string,
+		alt: PropTypes.string,
+		title: PropTypes.string,
+		description: PropTypes.string,
+		url: PropTypes.string,
+		button: PropTypes.string
+	}
+};
